@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %>></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="nav">
+        <h4>Stony Hill Primary School</h4>
+        <div class="btnCon">
+            <a href="/admin">Home</a>
+            <a href="login/logout">Logout</a>
+        </div>
+    </div>
+    <div class="formCon">
+        <form action="/changeStat/update/<%= info.rent_id %>" method="post">
+            <h2>STUDENT: <%= info.f_name %>  <%= info.l_name %></h2>
+            <h2><%= info.b_title %></h2>
+            <img src="<%= info.book_cover %>" alt="">
+            <h2>Current Status: <%= info.avail %></h2>
+            <div class="changeOp">
+                <h2>Change Status To:</h2>
+                <select name="change_cat" id="" class="cat">
+                    <option value="Pending">Pending</option>
+                    <option value="Yes">Available</option>
+                    <option value="No">Unavailable</option>
+                    <option value="Returned">Returned</option>
+                </select>
+            </div>
+            <input type="hidden" name="check" value="<%= info.rent_id %>">
+            <input type="hidden" name="sID" value="<%= info.sID %>">
+            <input type="hidden" name="bID" value="<%= info.bID %>">
+            <input type="submit" class="btn" value="Update">
+            
+        </form>
+    </div>
+</body>
+</html>

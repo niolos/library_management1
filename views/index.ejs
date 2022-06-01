@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="nav">
+        <h4>Stony Hill Primary School</h4>
+        <div class="btnCon">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+
+        </div>
+    </div>
+    <% if(messages.error) { %>
+        <p><%- messages.error %></p>
+    <% } %>
+    <form class="category" action="/index/select" method="post">
+        <select name="cat" class="cat">
+            <option value="all">All</option>
+            <option value="IT">Information Technology</option>
+            <option value="Comic">Comic</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Hentai">Hentai</option>
+        </select>
+        <input type="submit" value="Search" class="btn">
+    </form>
+    <div class="cardCon" method="post">
+        <% books.forEach(function(book){ %>
+        <div class="card">
+            <img src="<%= book.book_cover %>" alt="">
+            <form action="/index/borrowed/:id" method="post" class="info">
+                <h5>TITLE: <%= book.title %></h5>
+                <h5>AUTHOR: <%= book.author %></h5>
+                <h5>PUBLISHED: <%= book.date_pub %></h5>
+                <h5>AVAILABLE: <%= book.available %></h5>
+                <label for="">Enter Student ID to Borrow book</label>
+                    <input type="number" placeholder="Student ID e.g. 2" name="sID">
+                    <input type="hidden" value="<%= book.id %>" name="id" >
+                    <input type="submit" value="Borrow" class="btn">
+                </form>
+        </div>
+        <% }); %>
+    </div>
+</body>
+</html>

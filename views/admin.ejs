@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="nav">
+        <h4>Stony Hill Primary School</h4>
+        <div class="btnCon">
+            <a href="login/logout">Logout</a>
+        </div>
+    </div>
+    <div class="tCon">
+        <table>
+            <tr>
+                <th>Student ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Borrowed Book</th>
+                <th>Book Status</th>
+                <th>Date Rented</th>
+                <th>Date Returned</th>
+                <th>Action</th>
+            </tr> 
+            <% info.forEach(function(data){ %>
+                <% if(data.checkDiff<4){ %>
+                    <tr>
+                        <td><%= data.sID%></td>
+                        <td><%= data.f_name%></td>
+                        <td><%= data.l_name%></td>
+                        <td><%= data.b_title %></td>
+                        <td><%= data.avail %></td>
+                        <td><%= data.rent_date %></td>
+                        <td><%= data.return_date %></td>
+                        <td><a href="/changeStat/<%= data.rent_id %>">EDIT</a></td>
+                        <td><input type="hidden" value="<%= data.rent_id %>" name="rent_id"></td>
+                        <input type="hidden" value="data.rent_date" name="rent_date">
+                        <input type="hidden" value="data.return_date" name="return_date">
+                    </tr>
+                <%}else{%>
+                    <tr class="red">
+                        <td><%= data.sID%></td>
+                        <td><%= data.f_name%></td>
+                        <td><%= data.l_name%></td>
+                        <td><%= data.b_title %></td>
+                        <td><%= data.avail %></td>
+                        <td><%= data.rent_date %></td>
+                        <td><%= data.return_date %></td>
+                        <td><a href="/changeStat/<%= data.rent_id %>">EDIT</a></td>
+                        <td><input type="hidden" value="<%= data.rent_id %>" name="rent_id"></td>
+                        <input type="hidden" value="data.rent_date" name="rent_date">
+                        <input type="hidden" value="data.return_date" name="return_date">
+                    </tr>
+                <%}%>
+            <%})%>
+        </table>
+    </div>
+</body>
+</html>

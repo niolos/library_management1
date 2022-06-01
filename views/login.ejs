@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="nav">
+        <h4>Stony Hill Primary School</h4>
+        <div class="btnCon">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+
+        </div>
+    </div>
+    <div class="loginCon">
+        <form action="/login/checkLogin" class="loginF" method="post">
+            <h3>ADMIN LOGIN</h3>
+            <% if(messages.error) { %>
+                <p><%- messages.error %></p>
+            <% } %>
+            <div class="input">
+                <label for="">Username</label>
+                <input type="text" name="user">
+            </div>
+            <div class="input">
+                <label for="">Password</label>
+                <input type="text" name="pass">
+            </div>
+            <input type="submit" value="Login" class="btn">
+
+        </form>
+    </div>
+</body>
+</html>
